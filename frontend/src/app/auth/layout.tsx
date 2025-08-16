@@ -12,10 +12,7 @@ const AuthLayout = ({children}:{children:React.ReactNode}) => {
         <div className=' flex-1 md:flex-1/2 px-8 lg:px-20'>
       {children}
         </div>
-
        </div>
-
-      
     </main>
   )
 }
