@@ -2,14 +2,22 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
+import { CiHome } from "react-icons/ci";
+import { MdInventory } from "react-icons/md";
+import { HiOutlineDocumentReport } from "react-icons/hi";
+import { RiAccountCircleLine } from "react-icons/ri";
+import { MdOutlineShoppingBag } from "react-icons/md";
+import { PiListChecksLight } from "react-icons/pi";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const links = [
-  { name: "Dashboard", icon: "/icons/dashboard.svg", route: "/core/dashboard" },
-  { name: "Inventory", icon: "/icons/inventory.svg", route: "/core/products" },
-  { name: "Reports", icon: "/icons/report.svg", route: "/core/reports" },
-  { name: "Suppliers", icon: "/icons/suppliers.svg", route: "/core/suppliers" },
-  { name: "Orders", icon: "/icons/order.svg", route: "/core/orders" },
-  { name: "Manage Store", icon: "/icons/manage-store.svg", route: "/core/manage-store" },
+  { name: "Dashboard", icon: <CiHome/>, route: "/core/dashboard" },
+  { name: "Inventory", icon: <MdInventory />, route: "/core/products" },
+  { name: "Reports", icon: <HiOutlineDocumentReport/>, route: "/core/reports" },
+  { name: "Suppliers", icon: <RiAccountCircleLine />, route: "/core/suppliers" },
+  { name: "Orders", icon: <MdOutlineShoppingBag />, route: "/core/orders" },
+  { name: "Manage Store", icon: <PiListChecksLight />, route: "/core/manage-store" },
 ]
 
 interface LeftbarProps {
@@ -18,11 +26,15 @@ interface LeftbarProps {
 
 const Leftbar = ({ onCloseSidebar }: LeftbarProps) => {
   const [isActive, setIsActive] = useState("Dashboard");
+  
+  const router = useRouter();
 
   const handleClick = (name: string) => {
+
     setIsActive(name);
     if (onCloseSidebar) onCloseSidebar(); 
   };
+
 
   return (
     <div className="flex flex-col justify-between px-6 py-4 min-h-screen">
@@ -36,16 +48,20 @@ const Leftbar = ({ onCloseSidebar }: LeftbarProps) => {
 
         <div className="flex flex-col space-y-6">
           {links.map((link) => (
-            <div
-              key={link.name}
-              className={`flex items-center gap-4 cursor-pointer ${
-                isActive === link.name ? "text-blue-600" : "text-gray-700"
-              }`}
-              onClick={() => handleClick(link.name)}
-            >
-              <Image src={link.icon} alt={`${link.name} icon`} height={24} width={24} />
-              <span>{link.name}</span>
-            </div>
+            <Link href={link.route} key={link.name}  onClick={() => {
+              router.push(link.route);
+              handleClick(link.name)}
+              }>
+            
+              <div
+                className={`flex items-center gap-4 cursor-pointer ${
+                  isActive === link.name ? "text-blue-600" : "text-gray-700"
+                }`}
+              >
+                {link.icon}
+                <span>{link.name}</span>
+              </div>
+            </Link>
           ))}
         </div>
       </div>

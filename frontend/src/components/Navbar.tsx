@@ -11,7 +11,6 @@ const Navbar = ({onClickSidebar}:NavbarProps) => {
 
   return (
     <nav className='w-full h-[70px] bg-white flex items-center justify-between px-6 shadow-md  '>
-
       <div className='h-[30px] w-[200px] lg:w-[300px] bg-transparent border-[1.5px] border-gray-900 flex items-center rounded-md py-2 px-2'>
         <img src="/icons/search.svg" />
         <input 

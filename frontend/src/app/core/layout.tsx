@@ -39,13 +39,13 @@ const CoreLayout = ({children}:{children:React.ReactNode}) => {
       <div
         ref={sidebarRef}
         className={`fixed lg:static inset-y-0 left-0 z-50 transform transition-transform duration-300 
-          w-64 lg:w-[15%] min-h-screen 
+          w-64 lg:w-[15%] h-screen 
           ${sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
           bg-white shadow-md rounded-r-md`}
       >
         <Leftbar onCloseSidebar={() => setSidebarOpen(false)} />
       </div>
-      <section className="w-full lg:w-[85%] h-full flex flex-col gap-6">
+      <section className="w-full lg:w-[85%] h-full flex flex-col">
         <Navbar onClickSidebar={toggleSidebar} />
         {children}
       </section>
