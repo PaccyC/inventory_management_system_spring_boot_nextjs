@@ -35,59 +35,56 @@ const Dashboard = () => {
     <div className='w-full px-6 py-4 bg-transparent flex flex-col gap-4'>
 
       <div className='w-full flex flex-col  md:grid gap-4  grid-cols-3'>
-        <div className='md:col-span-2 bg-white rounded-lg shadow-md px-4 py-4 flex flex-col justify-between'>
-          <h3 className='text-xl font-medium text-grey-800'>Sales Overview</h3>
-          <div className='w-full flex items-center justify-between'>
-            <div className='flex flex-col gap-3 items-center'>
-              <div className='bg-[#629FF4]/30 h-6 w-6 p-0.5 rounded-xs'>
-                <img src="/icons/sales.svg" className='' alt='sales icons'/>
-              
-              </div>
-              <div className=' flex gap-4 items-center'>
-                <span>$843</span>
-                <span>Sales</span>
-              </div>
-            </div>
+        <div className="md:col-span-2 bg-white rounded-lg shadow-md px-4 py-4 flex flex-col gap-4">
+  <h3 className="text-xl font-medium text-grey-800">Sales Overview</h3>
 
-            <div className='h-full w-[1px] bg-[#F0F1F3]'/>
+  <div className=" grid grid-cols-2  gap-6 md:flex items-center justify-between">
+    
+    <div className="flex flex-col items-center gap-2">
+      <div className="bg-[#629FF4]/30 h-8 w-8 p-1 rounded-md flex items-center justify-center">
+        <img src="/icons/sales.svg" alt="sales icon" />
+      </div>
+      <div className="flex flex-col items-center">
+        <span className="font-semibold text-gray-800">$843</span>
+        <span className="text-sm text-gray-500">Sales</span>
+      </div>
+    </div>
+     <div className='h-full hidden md:flex w-[1px] bg-[#F0F1F3]'/>
 
-             <div className='flex flex-col gap-3 items-center'>
-              <div className='bg-[#629FF4]/30 h-6 w-6 p-0.5 rounded-xs'>
-                <img src="/icons/revenue.svg" className='' alt='Revenue icons'/>
-              
-              </div>
-              <div className=' flex gap-4 items-center'>
-                <span>$18,300</span>
-                <span>Revenue</span>
-              </div>
-            </div>
-            <div className='h-full w-[1px] bg-[#F0F1F3]'/>
-            <div className='flex flex-col gap-3 items-center'>
-              <div className='bg-[#629FF4]/30 h-6 w-6 p-0.5 rounded-xs'>
-                <img src="/icons/profit.svg" className='' alt='sales icons'/>
-              
-              </div>
-              <div className=' flex gap-4 items-center'>
-                <span>$666</span>
-                <span>Profit</span>
-              </div>
-            </div>
-            <div className='h-full w-[1px] bg-[#F0F1F3]'/>
-            <div className='flex flex-col gap-3 items-center'>
-              <div className='bg-[#629FF4]/30 h-6 w-6 p-0.5 rounded-xs'>
-                <img src="/icons/cost.svg" className='' alt='cost icon'/>
-              
-              </div>
-              <div className=' flex gap-4 items-center'>
-                <span>$17,432</span>
-                <span>Cost</span>
-              </div>
-            </div>
+    <div className="flex flex-col items-center gap-2">
+      <div className="bg-[#629FF4]/30 h-8 w-8 p-1 rounded-md flex items-center justify-center">
+        <img src="/icons/revenue.svg" alt="revenue icon" />
+      </div>
+      <div className="flex flex-col items-center">
+        <span className="font-semibold text-gray-800">$18,300</span>
+        <span className="text-sm text-gray-500">Revenue</span>
+      </div>
+    </div>
+     <div className='h-full hidden md:flex w-[1px] bg-[#F0F1F3]'/>
 
-          </div>
+    <div className="flex flex-col items-center gap-2">
+      <div className="bg-[#629FF4]/30 h-8 w-8 p-1 rounded-md flex items-center justify-center">
+        <img src="/icons/profit.svg" alt="profit icon" />
+      </div>
+      <div className="flex flex-col items-center">
+        <span className="font-semibold text-gray-800">$666</span>
+        <span className="text-sm text-gray-500">Profit</span>
+      </div>
+    </div>
+     <div className='h-full hidden md:flex w-[1px] bg-[#F0F1F3]'/>
 
+    <div className="flex flex-col items-center gap-2">
+      <div className="bg-[#629FF4]/30 h-8 w-8 p-1 rounded-md flex items-center justify-center">
+        <img src="/icons/cost.svg" alt="cost icon" />
+      </div>
+      <div className="flex flex-col items-center">
+        <span className="font-semibold text-gray-800">$17,432</span>
+        <span className="text-sm text-gray-500">Cost</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-        </div>
         <div className='md:col-span-1 bg-white rounded-lg shadow-md px-6 py-4 flex flex-col gap-4'>
           <h3 className='text-xl font-medium text-grey-800'>Inventory Summary</h3>
           <div className='w-full flex justify-between items-center'>
@@ -95,7 +92,6 @@ const Dashboard = () => {
             <div className='flex flex-col items-center'>
               <div className='bg-[#629FF4]/30 h-6 w-6 p-0.5 rounded-xs'>
                 <img src="/icons/quantity.svg" className='' alt='sales icons'/>
-              
               </div>
               <p>878</p>
               <p>Quantity in Hand</p>
@@ -122,7 +118,7 @@ const Dashboard = () => {
        <div className='w-full flex flex-col  md:grid gap-4  grid-cols-3'>
         <div className='md:col-span-2 bg-white rounded-lg shadow-md px-4 py-4 flex flex-col justify-between'>
           <h3 className='text-xl font-medium text-grey-800'>Purchase Overview</h3>
-          <div className='w-full flex items-center justify-between'>
+          <div className='w-full md:flex items-center justify-between grid grid-cols-2 md:grid-cols-4 gap-6'>
             <div className='flex flex-col gap-3 items-center'>
               <div className='bg-[#629FF4]/30 h-6 w-6 p-0.5 rounded-xs'>
                 <img src="/icons/purchase-bag.svg" className='h-full object-contain' alt='sales icons'/>
@@ -134,7 +130,7 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className='h-full w-[1px] bg-[#F0F1F3]'/>
+            <div className='h-full hidden md:flex w-[1px] bg-[#F0F1F3]'/>
 
              <div className='flex flex-col gap-3 items-center'>
               <div className='bg-[#629FF4]/30 h-6 w-6 p-0.5 rounded-xs'>
@@ -146,7 +142,7 @@ const Dashboard = () => {
                 <span>Cost</span>
               </div>
             </div>
-            <div className='h-full w-[1px] bg-[#F0F1F3]'/>
+            <div className='h-full hidden md:flex w-[1px] bg-[#F0F1F3]'/>
             <div className='flex flex-col gap-3 items-center'>
               <div className='bg-[#629FF4]/30 h-6 w-6 p-0.5 rounded-xs'>
                 <img src="/icons/cancel.svg" className='h-full object-contain' alt='cancel icons'/>
@@ -157,7 +153,7 @@ const Dashboard = () => {
                 <span>Cancel</span>
               </div>
             </div>
-            <div className='h-full w-[1px] bg-[#F0F1F3]'/>
+            <div className='h-full hidden md:flex w-[1px] bg-[#F0F1F3]'/>
             <div className='flex flex-col gap-3 items-center'>
               <div className='bg-[#629FF4]/30 h-6 w-6 p-0.5 rounded-xs'>
                 <img src="/icons/sales.svg" className='h-full object-contain' alt='sales icons'/>
