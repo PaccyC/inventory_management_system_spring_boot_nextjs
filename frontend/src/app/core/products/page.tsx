@@ -19,6 +19,7 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination"
 
+
 const InventoryPage = () => {
   return (
      <div className='w-full px-6 py-4 bg-transparent flex flex-col gap-4'>
