@@ -90,7 +90,7 @@ const InventoryPage = () => {
             type='button' 
             className='text-gray-900 bg-transparent hover:bg-gray-100 border-[1px] border-gray-900 px-4 py-2 cursor-pointer flex gap-1 items-center justify-center'
             >
-              <img src="/icons/filter.svg"/>
+              <img src="/icons/filter.svg" alt='filter'/>
               <p>Filter</p>
             </Button>
              <Button 

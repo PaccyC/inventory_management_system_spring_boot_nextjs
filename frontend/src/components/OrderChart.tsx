@@ -1,6 +1,6 @@
 "use client";
 
-import { ComposedChart, Area, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
+import { ComposedChart, Area, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 const data = [
   { name: "Jan", ordered: 4000, delivered: 2400 },
