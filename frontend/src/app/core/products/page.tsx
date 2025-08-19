@@ -80,7 +80,7 @@ const InventoryPage = () => {
       <div className='w-full bg-white rounded-lg px-4 py-4 flex flex-col gap-4'>
         <div className='w-full flex justify-between items-center'>
           <h3 className='text-2xl font-medium text-gray-900'>Products</h3>
-          <div className=' flex gap-3 items-center'>
+          <div className=' hidden md:flex gap-3 items-center'>
             <Button 
             type='button' 
             className='text-white bg-[#1366D9] px-4 py-2 cursor-pointer text-center'
