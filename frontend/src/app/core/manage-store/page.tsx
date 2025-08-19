@@ -57,7 +57,6 @@ const ManageStore = () => {
                   <span className='text-[#858D9D] text-sm font-light'>{store.anotherName}</span>
                   <span className='text-[#858D9D] text-sm font-light'>{store.phone}</span>
                 </div>
-
                 <Button 
                 type='button'
                 className='text-primary text-sm bg-transparent border-[2px] border-[#E8F1FD] rounded-md hover:bg-transparent cursor-pointer px-4 py-1'

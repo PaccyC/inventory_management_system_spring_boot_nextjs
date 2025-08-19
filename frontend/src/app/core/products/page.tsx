@@ -1,5 +1,7 @@
+"use client";
+
 import { Button } from '@/components/ui/button'
-import React from 'react'
+import React,{useState} from 'react'
 
 import {
   Table,
@@ -18,10 +20,14 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination"
+import AddNewProductModal from '@/components/AddNewProductModal';
 
 
 const InventoryPage = () => {
+  const [addProductModalActive, setAddProductModalActive] = useState(false);
   return (
+    <>
+    
      <div className='w-full px-6 py-4 bg-transparent flex flex-col gap-4'>
       <div className='w-full bg-white rounded-lg px-4 py-4 flex flex-col gap-4'>
         <h3 className='text-2xl font-medium text-gray-900'>Overall Inventory</h3>
@@ -83,6 +89,7 @@ const InventoryPage = () => {
           <div className=' hidden md:flex gap-3 items-center'>
             <Button 
             type='button' 
+            onClick={()=>setAddProductModalActive(true)}
             className='text-white bg-[#1366D9] px-4 py-2 cursor-pointer text-center'
             >Add Product
             </Button>
@@ -224,7 +231,9 @@ const InventoryPage = () => {
             </Button>
           </div>
         </div>
+     {addProductModalActive && <AddNewProductModal onDiscard={()=>setAddProductModalActive(false)}  />}
      </div>
+     </>
   )
 }
 
