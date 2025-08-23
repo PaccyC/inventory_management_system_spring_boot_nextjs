@@ -34,13 +34,11 @@ const ProductDetails = () => {
             <TabsTrigger value="adjustments">Adjustments</TabsTrigger>
             <TabsTrigger value="history">History</TabsTrigger>
           </TabsList>
-
           <TabsContent value="overview">
             <div className="w-full flex flex-col-reverse gap-6 mt-6 md:flex-row px-3 py-3 flex-1">
               
               {/* Left section */}
               <div className="flex flex-col gap-8 flex-1/2 md:pr-24">
-           
                 <div className="flex flex-col gap-3">
                   <h5 className="text-base font-medium text-gray-800">Primary Details</h5>
                   <div className="flex flex-col gap-2 text-sm text-gray-700">

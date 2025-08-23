@@ -25,7 +25,7 @@ const CoreLayout = ({children}:{children:React.ReactNode}) => {
   }, [sidebarOpen])
 
   return (
-    <main className="w-full min-h-screen flex gap-0.5 bg-gray-300 relative">
+    <main className="w-full min-h-screen flex gap-0.5 bg-gray-300 relative overflow-hidden">
 
       {/* Overlay for mobile */}
       {sidebarOpen && (
@@ -45,9 +45,15 @@ const CoreLayout = ({children}:{children:React.ReactNode}) => {
       >
         <Leftbar onCloseSidebar={() => setSidebarOpen(false)} />
       </div>
-      <section className="w-full lg:w-[85%] h-full flex flex-col">
-        <Navbar onClickSidebar={toggleSidebar} />
-        {children}
+      <section className="w-full lg:w-[85%] h-screen flex flex-col">
+        <div className='sticky top-0 z-30'>
+          <Navbar onClickSidebar={toggleSidebar} />
+
+        </div>
+        <div className='flex-1 overflow-y-auto'>
+          {children}
+
+        </div>
       </section>
     </main>
   )
