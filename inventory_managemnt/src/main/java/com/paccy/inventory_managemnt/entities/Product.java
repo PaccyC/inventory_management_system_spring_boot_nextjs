@@ -1,13 +1,14 @@
 package com.paccy.inventory_managemnt.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.File;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -26,14 +27,20 @@ public class Product {
     private String name;
     private  String description;
     private Double unitPrice;
-    private String pictureUrl;
+
+    @Column(name = "picture_url")
+    private byte[] pictureUrl;
     private Double quantity;
-    private Date manufactureDate;
-    private Date expiryDate;
+    private LocalDate manufactureDate;
+    private LocalDate expiryDate;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "supplier_id")
     private Supplier supplier;
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
+    private User user;
 
 }

@@ -1,6 +1,7 @@
 package com.paccy.inventory_managemnt.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,7 +34,10 @@ public class User implements UserDetails {
     private String password;
 
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonManagedReference
 
+    private List<Product> product;
 
 
     @Override
