@@ -23,8 +23,7 @@ import {toast} from "react-hot-toast"
 import { loginUser } from '@/utils/api/user';
 import { useAppDispatch } from '@/hooks/hooks';
 import {  login} from '@/redux/slices/user-slice'
-
-
+import { useRouter } from 'next/navigation';
 
 
 
@@ -39,6 +38,7 @@ const formSchema = z.object({
 
 const LoginPage = () => {
   const dispatch=useAppDispatch()
+  const router= useRouter();
 
     const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -64,6 +64,8 @@ const LoginPage = () => {
         duration:1000,
         
       })
+      router.replace("/core/dashboard")
+      
     } catch (error) {
       console.log("Error while logging in",error);
       

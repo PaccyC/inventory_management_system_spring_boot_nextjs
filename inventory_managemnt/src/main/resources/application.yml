@@ -20,6 +20,10 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
 
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
   flyway:
     enabled: true
     user: ${DB_USERNAME}

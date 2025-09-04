@@ -1,3 +1,4 @@
+import { CreateUserInterface } from "@/types";
 import { publicApiClient } from "../apiClient";
 
 export const registerUser= async({names,email,password,}:CreateUserInterface)=>{

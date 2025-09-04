@@ -3,7 +3,7 @@
 import Leftbar from '@/components/Leftbar'
 import Navbar from '@/components/Navbar'
 import React, { useState, useRef, useEffect } from 'react'
-
+import { QueryClientProvider } from '@tanstack/react-query'
 
 const CoreLayout = ({children}:{children:React.ReactNode}) => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -26,6 +26,7 @@ const CoreLayout = ({children}:{children:React.ReactNode}) => {
   }, [sidebarOpen])
 
   return (
+    
     <main className="w-full min-h-screen flex gap-0.5 bg-gray-300 relative overflow-hidden">
 
       {/* Overlay for mobile */}

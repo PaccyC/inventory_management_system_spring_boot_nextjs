@@ -45,3 +45,14 @@ data:User;
 }
 
 
+
+export type ICreateProduct={
+
+    name:string;
+    description:string;
+    unitPrice:number;
+    quantity:number;
+    imageFile:File;
+    mfgDate:string;
+    expDate:string;
+}
