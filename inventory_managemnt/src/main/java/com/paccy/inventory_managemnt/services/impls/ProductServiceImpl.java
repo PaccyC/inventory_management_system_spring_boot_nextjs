@@ -1,9 +1,11 @@
 package com.paccy.inventory_managemnt.services.impls;
 
 import com.paccy.inventory_managemnt.entities.Product;
+import com.paccy.inventory_managemnt.entities.Supplier;
 import com.paccy.inventory_managemnt.entities.User;
 import com.paccy.inventory_managemnt.exceptions.AppException;
 import com.paccy.inventory_managemnt.repository.IProductRepository;
+import com.paccy.inventory_managemnt.repository.ISupplierRepository;
 import com.paccy.inventory_managemnt.requests.CreateProductDto;
 import com.paccy.inventory_managemnt.services.IProductService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +26,7 @@ import java.util.UUID;
 public class ProductServiceImpl implements IProductService {
     private final IProductRepository productRepository;
     private final UserServiceImpl userService;
+    private final ISupplierRepository supplierRepository;
 
 
     @Override
@@ -44,6 +47,11 @@ public class ProductServiceImpl implements IProductService {
         product.setQuantity(createProductDto.quantity());
         product.setExpiryDate(createProductDto.expiryDate());
         product.setUser(userService.getMe(token));
+
+        Supplier supplier = supplierRepository.findById(createProductDto.supplierId()).orElseThrow(
+                () -> new AppException("Supplier not found")
+        );
+        product.setSupplier(supplier);
 
 
         return productRepository.save(product);

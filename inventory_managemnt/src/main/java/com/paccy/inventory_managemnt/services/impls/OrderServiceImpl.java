@@ -35,6 +35,7 @@ public class OrderServiceImpl implements IOrderService {
             if (product.getQuantity() - opDto.quantity() < 0) {
                 throw new RuntimeException("Quantity exceeds available quantity: " + opDto.quantity());
             }
+
             product.setQuantity(product.getQuantity() - opDto.quantity());
             productRepository.save(product);
             // Add product multiple times according to its quantity

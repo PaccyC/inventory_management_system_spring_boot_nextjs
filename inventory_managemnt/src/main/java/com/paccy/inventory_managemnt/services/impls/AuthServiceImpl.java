@@ -42,7 +42,7 @@ public class AuthServiceImpl implements IAuthService {
         claims.put("userId",user.getId());
         claims.put("names",user.getNames());
         String token= jwtService.generateToken(claims,user);
-        return new AuthResponse(token);
+        return new AuthResponse(token,user);
 
 
     }
