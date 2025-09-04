@@ -4,6 +4,7 @@ import Leftbar from '@/components/Leftbar'
 import Navbar from '@/components/Navbar'
 import React, { useState, useRef, useEffect } from 'react'
 
+
 const CoreLayout = ({children}:{children:React.ReactNode}) => {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const sidebarRef = useRef<HTMLDivElement>(null)
@@ -35,7 +36,6 @@ const CoreLayout = ({children}:{children:React.ReactNode}) => {
         />
       )}
 
-     
       <div
         ref={sidebarRef}
         className={`fixed lg:static inset-y-0 left-0 z-50 transform transition-transform duration-300 

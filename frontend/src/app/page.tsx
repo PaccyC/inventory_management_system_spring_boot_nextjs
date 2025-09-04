@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAppSelector } from "@/hooks/hooks";
 
 export default function Home() {
-  const [user,setUser]= useState<string |null>(null);
+
+   const {token}= useAppSelector((state)=>state.user);
 
   const router = useRouter();
-  return user ==null ? router.push("/auth/login") :router.push("/core/dashboard");
+  return token === "" ? router.push("/auth/login") :router.push("/core/dashboard");
 }

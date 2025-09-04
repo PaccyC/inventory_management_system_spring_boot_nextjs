@@ -2,19 +2,15 @@
 
 import Image from 'next/image'
 import React from 'react'
-
-
  
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { Checkbox } from "@/components/ui/checkbox"
- 
 import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -22,7 +18,16 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import Link from 'next/link';
- 
+import {toast} from "react-hot-toast"
+
+import { loginUser } from '@/utils/api/user';
+import { useAppDispatch } from '@/hooks/hooks';
+import {  login} from '@/redux/slices/user-slice'
+
+
+
+
+
 const formSchema = z.object({
   email: z.string().min(2, {
     message: "email must be at least 2 characters.",
@@ -33,6 +38,7 @@ const formSchema = z.object({
 })
 
 const LoginPage = () => {
+  const dispatch=useAppDispatch()
 
     const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -42,12 +48,29 @@ const LoginPage = () => {
     },
   })
  
+
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+   
+    try {
+      
+      const {token,user}= await loginUser(values.email,values.password);
+
+     
+      
+      dispatch(login({token,user}))
+
+      toast.success("Login successfull",{
+        duration:1000,
+        
+      })
+    } catch (error) {
+      console.log("Error while logging in",error);
+      
+    }
+
   }
+
 
   return (
     <div className='h-full w-full flex flex-col gap-4 items-center justify-center'>

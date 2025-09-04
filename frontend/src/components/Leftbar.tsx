@@ -10,6 +10,9 @@ import { MdOutlineShoppingBag } from "react-icons/md";
 import { PiListChecksLight } from "react-icons/pi";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/hooks/hooks";
+import {logout} from "@/redux/slices/user-slice"
+
 
 const links = [
   { name: "Dashboard", icon: <CiHome/>, route: "/core/dashboard" },
@@ -24,10 +27,12 @@ interface LeftbarProps {
   onCloseSidebar?: () => void;
 }
 
+
 const Leftbar = ({ onCloseSidebar }: LeftbarProps) => {
   const [isActive, setIsActive] = useState("Dashboard");
   
   const router = useRouter();
+  const dispatch= useAppDispatch()
 
   const handleClick = (name: string) => {
 
@@ -35,6 +40,13 @@ const Leftbar = ({ onCloseSidebar }: LeftbarProps) => {
     if (onCloseSidebar) onCloseSidebar(); 
   };
 
+
+  const logoutUser= ()=>{
+    dispatch(logout())
+    router.replace("/auth/login")
+     
+
+  }
 
   return (
     <div className="flex flex-col justify-between px-6 py-4 min-h-screen">
@@ -71,7 +83,7 @@ const Leftbar = ({ onCloseSidebar }: LeftbarProps) => {
           <Image src="/icons/settings.svg" alt="Settings icon" height={24} width={24} />
           <span>Settings</span>
         </div>
-        <div className="flex items-center gap-4 cursor-pointer" onClick={onCloseSidebar}>
+        <div  className="flex items-center gap-4 cursor-pointer" onClick={logoutUser}>
           <Image src="/icons/logout.svg" alt="Logout icon" height={24} width={24} />
           <span>Logout</span>
         </div>

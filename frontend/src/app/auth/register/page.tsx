@@ -1,20 +1,18 @@
 "use client";
 
 import Image from 'next/image'
-import React from 'react'
+import React, { useState } from 'react'
 
 
  
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { Checkbox } from "@/components/ui/checkbox"
  
 import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -22,9 +20,11 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { registerUser } from '@/utils/api/user';
  
 const formSchema = z.object({
-    name: z.string().min(4, {
+    names: z.string().min(4, {
     message: "name must be at least 4 characters.",
   }),
   email: z.string().min(2, {
@@ -37,20 +37,36 @@ const formSchema = z.object({
 
 const RegisterPage = () => {
 
+  const router = useRouter();
+const [loading, setLoading] = useState(false);
+const [error, setError] = useState<string | null>(null);
+
     const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
+      names: "",
       email: "",
       password: "",
     },
   })
  
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true);
+  setError(null);
+  try {
+    const result = await registerUser(values);
+    if (result) {
+      // Registration successful, redirect or show success
+      router.push("/auth/login"); // or wherever you want
+    } else {
+      setError("Registration failed. Please try again.");
+    }
+  } catch (err) {
+    setError("Registration failed. Please try again.");
+  } finally {
+    setLoading(false);
+  }
   }
 
   return (
@@ -74,7 +90,7 @@ const RegisterPage = () => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
          <FormField
           control={form.control}
-          name="name"
+          name="names"
           render={({ field }) => (
             <FormItem>
               <FormLabel className='text-gray-500 font-medium'>Name</FormLabel>
